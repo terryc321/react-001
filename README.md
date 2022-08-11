@@ -1,3 +1,227 @@
+
+
+# deployment
+
+npm run build
+
+everything in the build directory should be thought of as the deployed server root /www/
+
+sudo ln -sv /opt/node-18/bin/serve /usr/bin/serve
+
+to start server on the build directory on port 8000 use this
+
+serve -s build -p 8000
+
+# ERNO Watched files limit exceeded Bug
+
+could be visual code Bug
+
+# install JSON server globally
+
+npm i -g json-server
+
+mock rest api 
+
+post put patch delete requests - 
+
+# "server" : "json-server --watch db.json --port 5000"
+
+npm run server
+
+# db.json created - our mimic database
+
+# json picky
+
+json file 'welcome' is not a legal string - must be double quotes "welcome"
+
+integers ok
+true false ok
+no trailing commas {}, bad
+
+#  now created a valid json file
+
+# localhost ports now conceive of these 
+ 
+http://localhost:5000/tasks json server
+
+http://localhost:3000  development build
+
+"http://localhost:8000" production build
+
+pkill node
+pkill code 
+pkill firefox
+pkill opera
+
+npm start
+
+check that nothing is using these ports
+lsof -i :3000
+lsof -i :5000
+lsof -i :8000
+ 
+
+# lets get json data into our react app
+
+fetch api async await
+
+PUT ?
+GET
+DELETE
+POST
+
+# CRUD REST API 
+
+create new tasks
+
+update tasks
+
+delete tasks
+
+# SOAP vs REST api
+
+
+# Overview of react task appointment app
+
+## CSS is problematic
+
+### inline style uses double curly braces style={{ }}
+
+## javascript in the wild with JSX javascript and xhtml
+
+App.js
+
+// import react useState and useEffect 
+import {
+    useState,
+    useEffect
+}
+from 'react'
+// import components we made
+import Header from './components/Header'
+import Tasks from './components/Tasks'
+import AddTask from './components/AddTask'
+
+
+function App () that returns one thing
+
+at end of file is an export statement
+
+export default App;
+
+### components
+
+components write are uppercase App Header Tasks Task
+
+### App component itself
+
+some names cannot use class ? conflicts with html - for future note
+
+App returns one thing 
+return ( ) 
+
+### we can put normal html
+
+<div className="container">
+
+### inline javascript using { }
+
+put a header component on page
+<Header />
+
+if want to pass arguments to that Header component
+<Header title="Task Tracker" />
+
+if want to pass function to Header component
+<Header onAdd ={ () => doSomethingUseful() }
+
+onAdd will see a javascript , a function of no arguments that will call
+doSomethingUseful
+
+Task component given 3 parameters tasks , onDelete , onToggle 
+<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
+
+if onToggle is called from Tasks component - toggleReminder will be called 
+events bubble up
+
+same thing again for a Header component
+<Header title={"Task Tracker" } onAdd={ () => setShowAddTask(!showAddTask) } showAdd={showAddTask} />
+
+thinking about what want Header to do , just 
+
+### liberal sprinkling of COND ? DO-IF-TRUE : DO-IF-FALSE
+
+this says if tasks array has length greater than zero , put a Tasks component
+        here , otherwise show No Tasks to show
+		
+        {
+            tasks.length > 0 ? (
+		
+		    <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
+            ) : (
+                'No Tasks To Show'
+            )
+        }
+
+### function arrow notation
+
+function App () { 
+}
+
+becomes
+
+const App = () => { 
+}
+
+
+### react use state
+
+this code is saying useState features of react 
+
+// defined variable showAddTask
+// defined variable tasks 
+
+// initial value of showAddTask is boolean false
+// initial value of tasks is an empty array
+
+import { useState } from 'react'
+
+const App = () => {
+	const [showAddTask, setShowAddTask] = useState(false);
+    const [tasks, setTasks] = useState([]);
+	//
+	// rest of App follows ...
+	//
+}
+
+
+## shortcut && 
+
+showAddTask && <some component or html>
+
+if showAddTask is false then the component is not seen
+
+## fetch api  async  await fetch
+
+
+
+
+
+
+
+
+
+
+
+## security cookies
+## authentication 
+## security
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
